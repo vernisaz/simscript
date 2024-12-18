@@ -10,10 +10,10 @@ target clean {
 target crate:. {
 
    dependency {
-       anynewer(bee.7b,${project})
+       anynewer(bee.7b,${crate_dir}${~/~}lib${crate}.rlib)
    }
    dependency {
-         anynewer(*.rs,${crate_dir}${~/~}lib${crate}.rlib)
+       anynewer(*.rs,${crate_dir}${~/~}lib${crate}.rlib)
    }
    display(Compiling crate : ${crate} ...)
    exec rustc::  (
