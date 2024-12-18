@@ -1,0 +1,35 @@
+# common script for building a crate
+
+target clean {
+    dependency {true}
+    rm  (
+        ${crate_dir}${~/~}lib${crate}.rlib
+    )
+}
+
+target crate:. {
+
+   dependency {
+       anynewer(bee.7b,${project})
+   }
+   dependency {
+         anynewer(*.rs,${crate_dir}${~/~}lib${crate}.rlib)
+   }
+   display(Compiling crate : ${crate} ...)
+   exec rustc::  (
+       --color, always,
+       -C, opt-level=2,
+       --crate-type=lib,
+       --crate-name, crate,
+       --out-dir, ${crate_dir},
+       --edition, 2021,
+	   dep_crates,
+       ${main}.rs
+   )
+     if {
+         neq(${~~}, 0)
+         then {
+            panic("crate compilation error(s)")
+         }
+     }
+}

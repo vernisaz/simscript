@@ -1,0 +1,56 @@
+# comon script part for Rust projects
+# add the directory where rustc exists in PATH
+# for example, add line as :
+# export PATH=$home/side/rust/build/x86_64-unknown-linux-gnu/stage2/bin:$PATH
+# in ~/.profile
+# as: . "$HOME/projects/rust_util/src/script/setrustenv"
+
+executable=./${project}
+
+target clean {
+    dependency {}
+    rm  (project)
+}
+
+target build:. {
+   dependency{target(crate)}
+   dependency {
+       anynewer(bee.7b,${project})
+   }
+   dependency {
+       anynewer(${~cwd~}/*.rs,${~cwd~}/${project})
+   }
+   display(Compiling ${main} ...)
+   exec rustc::  (
+       --color, always,
+       -L,all=${crate_dir},
+       --extern, web_cgi,
+       -o,
+       project,
+       ${main}.rs
+   )
+     if {
+         neq(~~, 0)
+         then {
+            panic("compilation error(s)")
+         }
+     }
+}
+
+target run :.:Run project </> {
+    dependency {
+        target(build)
+    }
+    dependency {true}
+    ask(Would you like to run ${project}? [Y|n] , Y)
+    assign(answer, ~~)
+    if {
+        or{
+            eq(answer,y)
+            eq(answer,Y)
+        }
+        then {
+            exec executable (~args~)
+        }
+    }
+}
