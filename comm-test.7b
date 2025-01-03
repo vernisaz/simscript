@@ -1,0 +1,58 @@
+# common script for building test cases
+
+if {
+	eq(${~os~},windows)
+	then {
+		assign(t_ext,.exe)
+        }
+        else {
+             assign(t_ext,)
+        }
+}
+
+target build test:. {
+   dependency{target(crate)}
+   dependency {
+       anynewer(bee.7b,${project})
+   }
+   dependency {
+       anynewer(${~cwd~}/*.rs,${~cwd~}/${project})
+   }
+   dependency {
+       anynewer(${~cwd~}/test.rs,${~cwd~}/${test})
+   }
+   display(Compiling test ...)
+   exec rustc::  (
+       --color, always,
+       -L,all=${crate_dir},
+       --extern, crate,
+       -o,
+       test,
+       test.rs
+   )
+     if {
+         neq(~~, 0)
+         then {
+            panic("test compilation error(s)")
+         }
+     }
+}
+
+target run_test :.:Run test {
+    dependency {
+        target(build test)
+    }
+    dependency {true}
+    ask(Would you like to run the test ? [Y|n] , Y)
+    assign(answer, ~~)
+    if {
+        or{
+            eq(answer,y)
+            eq(answer,Y)
+        }
+        then {
+            assign(test,.\test${t_ext})
+            exec test (~args~)
+        }
+    }
+}

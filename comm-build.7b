@@ -13,11 +13,21 @@
 #
 #include(common);
 
-executable=./${project}
+if {
+	eq(${~os~},windows)
+	then {
+		assign(ext,.exe)
+        }
+        else {
+             assign(ext,)
+        }
+}
+
+executable=./${project}${ext}
 
 target clean {
     dependency {}
-    rm  (project)
+    rm  (executable)
 }
 
 target build:. {
