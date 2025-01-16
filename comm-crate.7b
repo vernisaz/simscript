@@ -23,6 +23,7 @@ target crate:. {
        --crate-name, crate,
        --out-dir, ${crate_dir},
        --edition, 2021,
+       comp opts,
 	   dep_crates,
        ${main}.rs
    )
