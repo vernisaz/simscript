@@ -19,6 +19,7 @@ target crate:. {
    exec rustc::  (
        --color, always,
        -C, opt-level=2,
+       -L,all=${crate_dir},
        --crate-type=lib,
        --crate-name, crate,
        --out-dir, ${crate_dir},
@@ -30,7 +31,7 @@ target crate:. {
      if {
          neq(${~~}, 0)
          then {
-            panic("crate compilation error(s)")
+            panic("a crate compilation error(s)")
          }
      }
 }

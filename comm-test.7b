@@ -21,14 +21,18 @@ target build test:. {
    dependency {
        anynewer(${~cwd~}/test.rs,${~cwd~}/${test})
    }
-   display(Compiling test ...)
+   if {
+   	   neq(test file,${test file})
+   	   then{assign(tesf file,test)}
+   }
+   display(Compiling ${test file} ...)
    exec rustc::  (
        --color, always,
        -L,all=${crate_dir},
        --extern, crate,
        -o,
        test,
-       test.rs
+       ${test file}.rs
    )
      if {
          neq(~~, 0)
