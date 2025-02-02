@@ -55,7 +55,12 @@ target run_test :.:Run test {
             eq(answer,Y)
         }
         then {
-            assign(test,.\test${t_ext})
+            if {
+            	neq(test,${test})
+            	then {
+            		assign(test,.\test${t_ext})
+            	}
+            }
             exec test (~args~)
         }
     }
