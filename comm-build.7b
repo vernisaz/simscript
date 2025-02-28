@@ -26,6 +26,10 @@ if {
 
 executable=./${project}${ext}
 
+filename(main)
+cropname(main,*${~/~}${~~})
+assign(src-path,~~)
+
 target clean {
     dependency {}
     rm  (executable)
@@ -34,12 +38,12 @@ target clean {
 target build:. {
    dependency{target(crate)}
    dependency {
-       anynewer(bee.7b,${project})
+       anynewer(bee.7b,${executable})
    }
    dependency {
-       anynewer(${~cwd~}/*.rs,${~cwd~}/${project})
+       anynewer(${src-path}${~/~}*.rs,${executable})
    }
-   display(Compiling ${main} ...)
+   display(Compiling ${main} ${src-path} ...)
    exec rustc::  (
        --color, always,
        -L,all=${crate_dir},
