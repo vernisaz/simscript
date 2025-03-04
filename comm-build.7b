@@ -43,7 +43,7 @@ target build:. {
    dependency {
        anynewer(${src-path}${~/~}*.rs,${executable})
    }
-   display(Compiling ${main} ${src-path} ...)
+   display(Compiling ${main} ...)
    exec rustc::  (
        --color, always,
        -L,all=${crate_dir},

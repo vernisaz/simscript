@@ -1,0 +1,71 @@
+# the following parameters have to be specified to use the script
+# project ="<name of the project>"
+# build_directory= "bin"
+# source_directory=  src/java
+# build_file= somefile.jar
+# domain=com
+# main class=${domain}.${project}.Main
+web=false
+
+target dirs {
+	dependency{eq {timestamp(build_directory)}}
+	mkd (build_directory)
+}
+
+target clean {
+	dependency{}
+	rmdira(${build_directory}${~/~}${domain})
+	rm(${build_directory}${~/~}${build_file})
+}
+
+target compile {
+    dependency{target(dirs)}
+	dependency{
+		anynewer(bee.7b,${source_directory}${~/~}${domain})
+	}
+	dependency{
+		or {newerthan(${source_directory}${~/~}${domain}/.java,${build_directory}${~/~}${domain}/.class)}
+	}
+	newerthan(${source_directory}${~/~}${domain}/.java,${build_directory}${~/~}${domain}/.class)
+	assign(main src,~~)
+	#display(${main src})
+	if {
+		neq(main src,"") then {
+			display(Compiling ${project} ...)
+			exec javac (
+			    -cp,deps,
+				-d,
+			     ${build_directory},
+			     main src
+			)
+			if {
+			     neq(~~, 0)
+			     then {
+			        panic("Compilation error(s)")
+			     }
+			}
+		}
+	}
+	
+}
+
+target jar {
+	dependency{target(compile)}
+      display(Jarring ${build_file} ...)
+      exec jar (
+        -cf,
+        ${build_directory}${~/~}${build_file},
+        -C,
+        ${build_directory},
+        ${domain}
+      )
+}
+
+target test {
+	dependency{target(jar)}
+	exec java (
+	  -cp,
+	  ${build_directory}${~/~}${build_file}${~path_separator~}${deps},
+	  test class
+	)
+}
