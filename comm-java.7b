@@ -12,7 +12,7 @@ target dirs {
 	mkd (build_directory)
 }
 
-target clean {
+target clear {
 	dependency{}
 	rmdira(${build_directory}${~/~}${domain})
 	rm(${build_directory}${~/~}${build_file})
