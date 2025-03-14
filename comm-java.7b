@@ -20,8 +20,8 @@ target clear {
 
 target compile {
     dependency{target(dirs)}
-	dependency{
-		anynewer(bee.7b,${source_directory}${~/~}${domain})
+    dependency{
+		anynewer(bee.7b,${build_directory}${~/~}${domain}${~/~}*)
 	}
 	dependency{
 		or {newerthan(${source_directory}${~/~}${domain}/.java,${build_directory}${~/~}${domain}/.class)}
@@ -29,6 +29,8 @@ target compile {
 	newerthan(${source_directory}${~/~}${domain}/.java,${build_directory}${~/~}${domain}/.class)
 	assign(main src,~~)
 	#display(${main src})
+#	anynewer(bee.7b,${build_directory}${~/~}${domain})
+#	display(${build_directory}${~/~}${domain} => ${~~})
 	if {
 		neq(main src,"") then {
 			display(Compiling ${project} ...)
