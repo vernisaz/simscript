@@ -65,7 +65,7 @@ target run :.:Run project </> {
         target(build)
     }
     dependency {true}
-    ask(Would you like to run ${project}? [Y|n] , Y)
+    ask(Would you like to run ${project}? [N|y] , N)
     assign(answer, ~~)
     if {
         or{
