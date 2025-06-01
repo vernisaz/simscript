@@ -58,7 +58,7 @@ target run_test :.:Run test {
             if {
             	neq(test,${test})
             	then {
-            		assign(test,.\test${t_ext})
+            		assign(test,.${~/~}test${t_ext})
             	}
             }
             exec test (~args~)
