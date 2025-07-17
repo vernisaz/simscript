@@ -23,7 +23,7 @@ target crate:. {
        --crate-type=lib,
        --crate-name, crate,
        --out-dir, ${crate_dir},
-       --edition, 2021,
+       --edition, 2024,
        comp opts,
 	   dep_crates,
        ${main}.rs
