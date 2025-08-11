@@ -32,6 +32,8 @@ assign(src-path,~~)
 
 target clean {
     dependency {}
+    dependency {clean_crate}
+    dependency {clean_extra}
     rm  (executable)
 }
 

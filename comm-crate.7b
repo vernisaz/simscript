@@ -1,6 +1,6 @@
 # common script for building a crate
 
-target clean {
+target clean_crate {
     dependency {true}
     rm  (
         ${crate_dir}${~/~}lib${crate}.rlib
@@ -26,7 +26,7 @@ target crate:. {
        --edition, 2024,
        comp opts,
 	   dep_crates,
-       ${main}.rs
+       ${crate main}.rs
    )
      if {
          neq(${~~}, 0)
