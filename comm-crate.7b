@@ -13,7 +13,7 @@ target crate:. {
        anynewer(bee.7b,${crate_dir}${~/~}lib${crate}.rlib)
    }
    dependency {
-       anynewer(*.rs,${crate_dir}${~/~}lib${crate}.rlib)
+       anynewer(${crate_src}${~/~}*.rs,${crate_dir}${~/~}lib${crate}.rlib)
    }
    display(Compiling crate : ${crate} ...)
    exec rustc::  (
