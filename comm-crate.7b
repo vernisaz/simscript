@@ -26,7 +26,7 @@ target crate:. {
        --edition, 2024,
        comp opts,
 	   dep_crates,
-       ${crate main}.rs
+       ${crate_src}${~/~}${crate main}.rs
    )
      if {
          neq(${~~}, 0)
