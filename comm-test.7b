@@ -30,6 +30,7 @@ target build test:. {
        --color, always,
        -L,all=${crate_dir},
        --extern, crate,
+       --cfg, test,
        -o,
        test,
        ${test file}.rs
