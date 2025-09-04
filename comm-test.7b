@@ -15,13 +15,13 @@ cfg_test=test
 target build test:. {
    dependency{target(crate)}
    dependency {
-       anynewer(bee.7b,${project})
+       anynewer(bee.7b,${test}${t_ext})
    }
    dependency {
-       anynewer(${~cwd~}/*.rs,${~cwd~}/${project})
+       anynewer(${~cwd~}/*.rs,${~cwd~}/${test}${t_ext})
    }
    dependency {
-       anynewer(${~cwd~}/test.rs,${~cwd~}/${test})
+       anynewer(${~cwd~}/${test file},${~cwd~}/${test}${t_ext})
    }
    if {
    	   neq(test file,${test file})
