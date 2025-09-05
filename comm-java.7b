@@ -54,14 +54,14 @@ target compile {
 
 target jar {
 	dependency{target(compile)}
-      display(Jarring ${build_file} ...)
-      exec jar (
+    display(Jarring ${build_file} ...)
+    exec jar (
         -cf,
         ${build_directory}${~/~}${build_file},
         -C,
         ${build_directory},
         ${domain}
-      )
+    )
 }
 
 target test {
