@@ -12,13 +12,14 @@ target dirs {
 	mkd (build_directory)
 }
 
-target clear {
+target clean {
 	dependency{}
 	rmdira(${build_directory}${~/~}${domain})
 	rm(${build_directory}${~/~}${build_file})
 }
 
 target compile {
+	dependency{target(load_libs)}
     dependency{target(dirs)}
     dependency{
 		anynewer(bee.7b,${build_directory}${~/~}${domain}${~/~}*)
@@ -65,9 +66,13 @@ target jar {
 
 target test {
 	dependency{target(jar)}
-	exec java (
-	  -cp,
-	  ${build_directory}${~/~}${build_file}${~path_separator~}${deps},
-	  test class
-	)
+	if {
+		neq(test class,) then {
+			exec java (
+			  -cp,
+			  ${build_directory}${~/~}${build_file}${~path_separator~}${deps},
+			  test class
+			)
+		}
+	}
 }
