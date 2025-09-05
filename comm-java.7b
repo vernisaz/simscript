@@ -22,7 +22,7 @@ target compile {
 	dependency{target(load_libs)}
     dependency{target(dirs)}
     dependency{
-		anynewer(bee.7b,${build_directory}${~/~}${domain}${~/~}*)
+		anynewer(~script~,${build_directory}${~/~}${domain}${~/~}*)
 	}
 	dependency{
 		or {newerthan(${source_directory}${~/~}${domain}/.java,${build_directory}${~/~}${domain}/.class)}
