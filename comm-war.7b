@@ -1,0 +1,44 @@
+# the script snippet is using for .war file generation
+
+target package {
+	dependency{target(compile)}
+	dependency {
+	      or {
+	       anynewer(src/view/*,${build_directory}/${war_file})
+	       anynewer(src/html/*,${build_directory}/${war_file})
+	       anynewer(src/cfg/*,${build_directory}/${war_file})
+	       anynewer(src/js/*,${build_directory}/${war_file})
+	       anynewer(${webbee_home}${~/~}src${~/~}*,${build_directory}/${war_file})
+	       anynewer(bee.7b,${build_directory}/${war_file})
+	     }
+    }
+	display(Warring ${project} ...)
+	array()
+	assign(lib_path,~~)
+	for dep:deps:~path_separator~ {
+		array(lib_path,dep)
+		assign(lib_path,~~)
+	}
+    zip(${build_directory}${~/~}${war_file},
+	   -B WEB-INF,src/res/cfg/web.xml,
+	   -C WEB-INF/classes/${domain},${build_directory}${~/~}${domain},
+	   -B WEB-INF/lib,lib_path,
+	   -B WEB-INF/config,src${~/~}res${~/~}cfg${~/~}*.properties,
+	   -C WEB-INF/view,src${~/~}res${~/~}view${~/~}*.htmt,
+	   -C WEB-INF/view,src${~/~}res${~/~}view${~/~}*.txt,
+	   -B image,src${~/~}res${~/~}image${~/~}*.png,
+	   -B,src${~/~}res${~/~}image${~/~}favicon.ico,
+	   -B js,src${~/~}js${~/~}*.js,
+	   -B css,src${~/~}res${~/~}html${~/~}style.css,
+	   -B,src${~/~}res${~/~}html${~/~}*.html,
+	   -B,src${~/~}res${~/~}html${~/~}*.jsp,
+	   -B,src${~/~}res${~/~}html${~/~}*.json,
+	   
+	   # merging webbee
+	   -B WEB-INF/text,${webbee_home}${~/~}src${~/~}res${~/~}text${~/~}*.properties,
+	   -C WEB-INF/view,${webbee_home}${~/~}src${~/~}res${~/~}template${~/~}*.htmt,
+	   -B js,${webbee_home}${~/~}src${~/~}js${~/~}*.js,
+	   -B css,${webbee_home}${~/~}src${~/~}res${~/~}css${~/~}*.css,
+	   -B image,${webbee_home}${~/~}src${~/~}res${~/~}image${~/~}*.gif
+   )
+}
