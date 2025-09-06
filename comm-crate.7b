@@ -10,7 +10,7 @@ target clean_crate {
 target crate:. {
 
    dependency {
-       anynewer(bee.7b,${crate_dir}${~/~}lib${crate}.rlib)
+       anynewer(~script~,${crate_dir}${~/~}lib${crate}.rlib)
    }
    dependency {
        anynewer(${crate_src}${~/~}*.rs,${crate_dir}${~/~}lib${crate}.rlib)

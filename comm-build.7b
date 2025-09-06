@@ -40,7 +40,7 @@ target clean {
 target build:. {
    dependency{target(crate)}
    dependency {
-       anynewer(bee.7b,${executable})
+       anynewer(~script~,${executable})
    }
    dependency {
        anynewer(${src-path}${~/~}*.rs,${executable})

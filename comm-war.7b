@@ -9,7 +9,7 @@ target package {
 	       anynewer(src/cfg/*,${build_directory}/${war_file})
 	       anynewer(src/js/*,${build_directory}/${war_file})
 	       anynewer(${webbee_home}${~/~}src${~/~}*,${build_directory}/${war_file})
-	       anynewer(bee.7b,${build_directory}/${war_file})
+	       anynewer(~script~,${build_directory}/${war_file})
 	     }
     }
 	display(Warring ${project} ...)
