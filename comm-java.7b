@@ -36,7 +36,7 @@ target compile {
 		neq(main src,"") then {
 			display(Compiling ${project} ...)
 			exec javac (
-			    -cp,deps,
+			    -cp,${build_directory}${~path_separator~}${deps},
 				-d,
 			     ${build_directory},
 			     main src
