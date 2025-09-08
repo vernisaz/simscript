@@ -24,8 +24,10 @@ target package {
 	   -C WEB-INF/classes/${domain},${build_directory}${~/~}${domain},
 	   -B WEB-INF/lib,lib_path,
 	   -B WEB-INF/config,src${~/~}res${~/~}cfg${~/~}*.properties,
-	   -C WEB-INF/view,src${~/~}res${~/~}view${~/~}*.htmt,
-	   -C WEB-INF/view,src${~/~}res${~/~}view${~/~}*.txt,
+	   -C WEB-INF/res/view,src${~/~}res${~/~}view${~/~}*.html,
+	   -C WEB-INF/res/view,src${~/~}res${~/~}view${~/~}*.txt,
+	   -C WEB-INF/res/text,src${~/~}res${~/~}text${~/~}*.properties,
+	   -B META-INF,src/res/cfg/context.xml,
 	   -B image,src${~/~}res${~/~}image${~/~}*.png,
 	   -B,src${~/~}res${~/~}image${~/~}favicon.ico,
 	   -B js,src${~/~}js${~/~}*.js,
@@ -35,8 +37,8 @@ target package {
 	   -B,src${~/~}res${~/~}html${~/~}*.json,
 	   
 	   # merging webbee
-	   -B WEB-INF/text,${webbee_home}${~/~}src${~/~}res${~/~}text${~/~}*.properties,
-	   -C WEB-INF/view,${webbee_home}${~/~}src${~/~}res${~/~}template${~/~}*.htmt,
+	   -B WEB-INF/res/text,${webbee_home}${~/~}src${~/~}res${~/~}text${~/~}*.properties,
+	   -C WEB-INF/res/view,${webbee_home}${~/~}src${~/~}res${~/~}template${~/~}*.htmt,
 	   -B js,${webbee_home}${~/~}src${~/~}js${~/~}*.js,
 	   -B css,${webbee_home}${~/~}src${~/~}res${~/~}css${~/~}*.css,
 	   -B image,${webbee_home}${~/~}src${~/~}res${~/~}image${~/~}*.gif
