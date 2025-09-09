@@ -39,6 +39,7 @@ target package {
 	   # merging webbee
 	   -B WEB-INF/res/text,${webbee_home}${~/~}src${~/~}res${~/~}text${~/~}*.properties,
 	   -C WEB-INF/res/view,${webbee_home}${~/~}src${~/~}res${~/~}template${~/~}*.htmt,
+	   -C WEB-INF/res/view,${webbee_home}${~/~}src${~/~}res${~/~}template${~/~}*.json,
 	   -B js,${webbee_home}${~/~}src${~/~}js${~/~}*.js,
 	   -B css,${webbee_home}${~/~}src${~/~}res${~/~}css${~/~}*.css,
 	   -B image,${webbee_home}${~/~}src${~/~}res${~/~}image${~/~}*.gif
