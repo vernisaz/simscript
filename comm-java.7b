@@ -30,7 +30,7 @@ target compile {
 	newerthan(${source_directory}${~/~}${domain}/.java,${build_directory}${~/~}${domain}/.class)
 	assign(main src,~~)
 	#display(${main src})
-#	anynewer(bee.7b,${build_directory}${~/~}${domain})
+#	anynewer(~script~,${build_directory}${~/~}${domain})
 #	display(${build_directory}${~/~}${domain} => ${~~})
 	if {
 		neq(main src,"") then {
