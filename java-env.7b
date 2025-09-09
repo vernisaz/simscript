@@ -1,0 +1,4 @@
+java_home="C:\Users\sunil\jdk-21.0.8"
+jar=${java_home}\bin\jar.exe #cool stuff
+javac=${java_home}\bin\javac.exe
+java=${java_home}\bin\java.exe
