@@ -7,6 +7,8 @@
 # main class=${domain}.${project}.Main
 web=false
 
+include(java-env.7b)
+
 target dirs {
 	dependency{eq {timestamp(build_directory)}}
 	mkd (build_directory)
