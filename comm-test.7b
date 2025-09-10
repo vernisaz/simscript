@@ -15,7 +15,7 @@ cfg_test=test
 target build test:. {
    dependency{target(crate)}
    dependency {
-       anynewer(bee.7b,${test}${t_ext})
+       anynewer(${~script~},${test}${t_ext})
    }
    dependency {
        anynewer(${~cwd~}/*.rs,${~cwd~}/${test}${t_ext})
