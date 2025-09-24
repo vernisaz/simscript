@@ -50,6 +50,7 @@ target build:. {
        --color, always,
        -L,all=${crate_dir},
        comp opts,
+       --edition, 2024,
        -o,
        project,
        ${main}.rs

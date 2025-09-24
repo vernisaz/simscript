@@ -33,6 +33,7 @@ target build test:. {
        -L,all=${crate_dir},
        --extern, crate,
        --cfg, cfg_test,
+       --edition, 2024,
        -o,
        test,
        ${test file}.rs
