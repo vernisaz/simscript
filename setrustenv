@@ -1,0 +1,11 @@
+#!/bin/sh
+# rustup shell setup
+# affix colons on either side of $PATH to simplify matching
+case ":${PATH}:" in
+    *:"$HOME/side/rust/build/x86_64-unknown-linux-gnu/stage1/bin":*)
+        ;;
+    *)
+        # Prepending path in case a system-installed rustc needs to be overridden
+        export PATH="$HOME/side/rust/build/x86_64-unknown-linux-gnu/stage1/bin:$PATH"
+        ;;
+esac
