@@ -17,7 +17,7 @@ crate_dir=../crates
 
 include(common);
 ```
-The typical script name is `bee.7b`. 7b automatically looks for such file,
+The typical script name is `bee.7b`. **7b** automatically looks for such file, so
 just type **rb**, and the script will be executed.
 
 ## Rust compiler access

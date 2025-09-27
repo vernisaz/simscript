@@ -1,5 +1,5 @@
 #!/bin/sh
-# rustup shell setup
+# rustc shell setup
 # affix colons on either side of $PATH to simplify matching
 case ":${PATH}:" in
     *:"$HOME/side/rust/build/x86_64-unknown-linux-gnu/stage1/bin":*)
