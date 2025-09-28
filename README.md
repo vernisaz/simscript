@@ -14,6 +14,7 @@ project  =modu
 main=test
 common =../simscript/comm-build.7b:file
 crate_dir=../crates
+comp opts=[]
 
 include(common);
 ```
