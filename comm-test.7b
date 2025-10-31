@@ -27,7 +27,7 @@ target build test:. {
    	   neq(test file,${test file})
    	   then{assign(tesf file,test)}
    }
-   display(Compiling ${test file} ...)
+   display(Compiling test ${test file} ...)
    exec rustc::  (
        --color, always,
        -L,all=${crate_dir},
