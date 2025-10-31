@@ -1,0 +1,21 @@
+# specify project name and main cpp
+
+target compile {
+	dependency {
+		anynewer(${main}.cpp,${project}_executable)
+	}
+	display(compiling ${project})
+	exec gcc (${main}.cpp, -o, ${project}_executable, -lstdc++)
+	if {
+        neq(~~, 0) then {
+            panic("compilation error(s)")
+        }
+    }
+}
+
+target run {
+	dependency{}
+	dependency{target(compile)}
+	assign(executable,./${project}_executable)
+	exec executable(~args~)
+}
