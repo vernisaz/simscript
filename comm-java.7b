@@ -5,6 +5,9 @@
 # build_file= somefile.jar
 # domain=com
 # main class=${domain}.${project}.Main
+#depd=<extra dependencies>
+#test_class=<class name for test>
+
 web=false
 
 include(java-env.7b)
@@ -73,7 +76,8 @@ target test {
 			exec java (
 			  -cp,
 			  ${build_directory}${~/~}${build_file}${~path_separator~}${deps},
-			  test class
+			  test class,
+			  test parameters
 			)
 		}
 	}
