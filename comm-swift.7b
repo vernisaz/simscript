@@ -1,0 +1,30 @@
+# common script for building Swift projects
+# it should be included in the following header script:
+#project = <project name>
+#files=[<list of swift files>]
+#src dir=<directory of source files>
+#common =../simscript/comm-swift.7b:file
+#include(common)
+
+target compile {
+    dependency{ anynewer(*.swift,project) }
+    comp files=[]
+    for file: files {
+    	array(comp files,${src dir}${~/~}${file})
+    	assign(comp files,~~)
+    }
+	exec swiftc (comp files,-color-diagnostics,-o,project)
+	if {
+	     neq(~~, 0)
+	     then {
+	        panic("compilation error(s)")
+	     }
+	 }
+}
+
+target run {
+	dependency{target(compile)}
+	dependency{}
+	assign(program,./${project})
+	exec program(~~)
+}
