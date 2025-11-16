@@ -1,4 +1,4 @@
-# 7b common scripts for Rust
+# RB common scripts
 
 ## Purpose
 The scripts used for building projects in different languages.
@@ -18,6 +18,7 @@ comp opts=[]
 
 include(common);
 ```
+So a final script will include the common script and required for it variables.
 A typical script name is `bee.7b`. **rb** automatically looks for files with such name pattern, so
 just type **rb**, and the script will be executed.
 
@@ -30,4 +31,4 @@ Modify paths accordingly your environment.
 
 ## Other languages
 
-There are also scipts to build Java projects.
+There are also scripts to build Java, Swift and C projects.
