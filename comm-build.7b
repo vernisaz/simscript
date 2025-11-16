@@ -15,13 +15,11 @@
 #include(common);
 
 if {
-	eq(${~os~},windows)
-	then {
+	eq(${~os~},windows) then {
 		assign(ext,.exe)
-        }
-        else {
-             assign(ext,)
-        }
+    } else {
+    	assign(ext,)
+    }
 }
 
 executable=./${project}${ext}
