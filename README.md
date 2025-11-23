@@ -1,10 +1,10 @@
-# 7b common scripts for Rust
+# RB common scripts
 
 ## Purpose
-The scripts used for building Rust projects.
+The scripts used for building projects in different languages.
 
 Using the scripts tremendously reduces efforts of building
-any project, making it simpler and faster than using Cargo.
+any project in Rust, making it simpler and faster than using Cargo.
 
 ## How to use
 Examples of a use are provided inside scripts.
@@ -18,7 +18,8 @@ comp opts=[]
 
 include(common);
 ```
-The typical script name is `bee.7b`. **7b** automatically looks for such file, so
+So a final script will include the common script and required for it variables.
+A typical script name is `bee.7b`. **rb** automatically looks for files with such name pattern, so
 just type **rb**, and the script will be executed.
 
 ## Rust compiler access
@@ -27,6 +28,7 @@ Unless you use `rustup`, you need to add the path to the compiler in `~/.profile
 
 Modify paths accordingly your environment.
 
+
 ## Other languages
 
-There are also scipts to build Java projects.
+There are also scripts to build Java, Swift and C projects.
