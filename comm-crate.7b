@@ -20,13 +20,13 @@ target clean_crate {
     )
 }
 
-target clippy:. {
-   dependency {
+target clippy_crate:. {
+    dependency {
        target(crate)
-   }
-   dependency {}
-   display(Clipping crate : ${crate} ...)
-   exec clippy-driver::  (
+    }
+    dependency {}
+    display(Clipping crate : ${crate} ...)
+    exec clippy-driver::  (
        --color, always,
        -L,all=${crate_dir},
        --crate-type=lib,
@@ -35,13 +35,13 @@ target clippy:. {
        comp opts,
 	   dep_crates,
        ${crate_src}${~/~}${crate main}.rs
-   )
-     if {
-         neq(${~~}, 0)
-         then {
+    )
+    if {
+        neq(${~~}, 0)
+        then {
             panic("crate clipping error(s)")
-         }
-     }
+        }
+    }
 }
 
 target crate:. {
