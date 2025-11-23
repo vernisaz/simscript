@@ -20,8 +20,31 @@ target clean_crate {
     )
 }
 
-target crate:. {
+target clippy:. {
+   dependency {
+       target(crate)
+   }
+   dependency {}
+   display(Clipping crate : ${crate} ...)
+   exec clippy-driver::  (
+       --color, always,
+       -L,all=${crate_dir},
+       --crate-type=lib,
+		-Cpanic=abort,
+       --edition, 2024,
+       comp opts,
+	   dep_crates,
+       ${crate_src}${~/~}${crate main}.rs
+   )
+     if {
+         neq(${~~}, 0)
+         then {
+            panic("crate clipping error(s)")
+         }
+     }
+}
 
+target crate:. {
    dependency {
        anynewer(${~script~},${crate_dir}${~/~}lib${crate}.rlib)
    }

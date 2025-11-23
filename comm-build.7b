@@ -35,6 +35,27 @@ target clean {
     rm  (executable)
 }
 
+target clippy:. {
+    dependency{target(build)}
+    dependency{}
+    display(Clipping ${main} ...)
+    exec clippy-driver::  (
+       --color, always,
+       -L,all=${crate_dir},
+       comp opts,
+       --edition, 2024,
+       -Cpanic=abort,
+       ${main}.rs
+    )
+    if {
+        neq(~~, 0)
+        then {
+            panic("clipping error(s)")
+        }
+    }
+}
+
+
 target build:. {
    dependency{target(crate)}
    dependency {
