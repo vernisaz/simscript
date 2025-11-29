@@ -6,6 +6,14 @@
 #common =../simscript/comm-swift.7b:file
 #include(common)
 
+target clean {
+	dependency{}
+	rm (project)
+	if {
+		eq(~~,) then { display(Nothing to clean)}
+	}
+}
+
 target compile {
     dependency{ anynewer(*.swift,project) }
     comp files=[]
@@ -25,6 +33,15 @@ target compile {
 target run {
 	dependency{target(compile)}
 	dependency{}
-	assign(program,./${project})
-	exec program(~~)
+	ask(Would you like to run ${project}? [N|y] , N)
+    assign(answer, ~~)
+    if {
+        or{
+            eq(answer,y)
+            eq(answer,Y)
+        } then {
+			assign(program,./${project})
+			exec program(~~)
+		}
+	}
 }
