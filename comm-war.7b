@@ -5,6 +5,7 @@ target package {
 	dependency {
 	      or {
 	       anynewer(src/view/*,${build_directory}/${war_file})
+	       anynewer(src/text/*,${build_directory}/${war_file})
 	       anynewer(src/html/*,${build_directory}/${war_file})
 	       anynewer(src/cfg/*,${build_directory}/${war_file})
 	       anynewer(src/js/*,${build_directory}/${war_file})
