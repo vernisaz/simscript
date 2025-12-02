@@ -45,7 +45,7 @@ target clippy:. {
        comp opts,
        --edition, 2024,
        -Cpanic=abort,
-       ${main}.rs
+       ${~cwd~}${~/~}${main}.rs
     )
     if {
         neq(~~, 0)
@@ -72,7 +72,7 @@ target build:. {
        --edition, 2024,
        -o,
        project,
-       ${main}.rs
+       ${~cwd~}${~/~}${main}.rs
    )
      if {
          neq(~~, 0)
