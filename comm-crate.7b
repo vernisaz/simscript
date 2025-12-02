@@ -34,7 +34,7 @@ target clippy_crate:. {
        --edition, 2024,
        comp opts,
 	   dep_crates,
-       ${crate_src}${~/~}${crate main}.rs
+       ${~cwd~}${~/~}${crate_src}${~/~}${crate main}.rs
     )
     if {
         neq(${~~}, 0)
@@ -62,7 +62,7 @@ target crate:. {
        --edition, 2024,
        comp opts,
 	   dep_crates,
-       ${crate_src}${~/~}${crate main}.rs
+       ${~cwd~}${~/~}${crate_src}${~/~}${crate main}.rs
    )
      if {
          neq(${~~}, 0)
