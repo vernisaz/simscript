@@ -57,29 +57,27 @@ target clippy:. {
 
 
 target build:. {
-   dependency{target(crate)}
-   dependency {
+    dependency{target(crate)}
+    dependency {
        anynewer(${~script~},${executable})
-   }
-   dependency {
+    }
+    dependency {
        anynewer(${src-path}${~/~}*.rs,${executable})
-   }
-   display(Compiling ${main} ...)
-   exec rustc::  (
+    }
+    display(Compiling ${main} ...)
+    exec rustc::  (
        --color, always,
        -L,all=${crate_dir},
        comp opts,
        --edition, 2024,
        -o,
        project,
-       ${~cwd~}${~/~}${main}.rs
-   )
-     if {
-         neq(~~, 0)
-         then {
+       ${~cwd~}${~/~}${main}.rs)
+    if {
+        neq(~~, 0) then {
             panic("compilation error(s)")
-         }
-     }
+        }
+    }
 }
 
 target run :.:Run project </> {
@@ -93,8 +91,7 @@ target run :.:Run project </> {
         or{
             eq(answer,y)
             eq(answer,Y)
-        }
-        then {
+        } then {
             exec executable (~args~)
         }
     }
