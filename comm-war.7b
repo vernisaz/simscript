@@ -4,10 +4,10 @@ target package {
 	dependency{target(compile)}
 	dependency {
 	      or {
-	       anynewer(src/view/*,${build_directory}/${war_file})
-	       anynewer(src/text/*,${build_directory}/${war_file})
-	       anynewer(src/html/*,${build_directory}/${war_file})
-	       anynewer(src/cfg/*,${build_directory}/${war_file})
+	       anynewer(src/res/view/*,${build_directory}/${war_file})
+	       anynewer(src/res/text/*,${build_directory}/${war_file})
+	       anynewer(src/res/html/*,${build_directory}/${war_file})
+	       anynewer(src/res/cfg/*,${build_directory}/${war_file})
 	       anynewer(src/js/*,${build_directory}/${war_file})
 	       anynewer(${webbee_home}${~/~}src${~/~}*,${build_directory}/${war_file})
 	       anynewer(~script~,${build_directory}/${war_file})
