@@ -36,7 +36,7 @@ target build test:. {
        --edition, 2024,
        -o,
        test,
-       ${test file}.rs
+       ${~cwd~}${~/~}${test file}.rs
    )
      if {
          neq(~~, 0)
