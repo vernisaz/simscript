@@ -45,6 +45,8 @@ target clippy:. {
        comp opts,
        --edition, 2024,
        -Cpanic=abort,
+       -o,
+       clippy-${project},
        ${~cwd~}${~/~}${main}.rs
     )
     if {
