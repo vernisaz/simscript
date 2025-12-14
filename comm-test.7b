@@ -15,14 +15,12 @@ cfg_test=test
 target build test:. {
    dependency{target(crate)}
    dependency {
-       anynewer(${~script~},${test}${t_ext})
+       anynewer(${~script~},${test file}${t_ext})
    }
    dependency {
-       anynewer(${~cwd~}/*.rs,${~cwd~}/${test}${t_ext})
+       anynewer(${~cwd~}/*.rs,${~cwd~}/${test file}${t_ext})
    }
-   dependency {
-       anynewer(${~cwd~}/${test file},${~cwd~}/${test}${t_ext})
-   }
+   
    if {
    	   neq(test file,${test file})
    	   then{assign(tesf file,test)}
