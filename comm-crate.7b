@@ -34,6 +34,8 @@ target clippy_crate:. {
        --edition, 2024,
        comp opts,
 	   dep_crates,
+	   -o,
+       clippy-${project},
        ${~cwd~}${~/~}${crate_src}${~/~}${crate main}.rs
     )
     if {
