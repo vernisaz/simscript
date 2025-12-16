@@ -35,7 +35,7 @@ target clippy_crate:. {
        comp opts,
 	   dep_crates,
 	   -o,
-       clippy-${project},
+       clippy-${crate}.rlib,
        ${~cwd~}${~/~}${crate_src}${~/~}${crate main}.rs
     )
     if {
