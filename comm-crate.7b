@@ -13,6 +13,8 @@
 #include(common_test);
 #include(common);
 
+crate opts=[-C, opt-level=2]
+
 target clean_crate {
     dependency {true}
     rm  (
@@ -32,7 +34,7 @@ target clippy_crate:. {
        --crate-type=lib,
 		-Cpanic=abort,
        --edition, 2024,
-       comp opts,
+       crate opts,
 	   dep_crates,
 	   -o,
        clippy-${crate}.rlib,
@@ -56,7 +58,7 @@ target crate:. {
    display(Compiling crate : ${crate} ...)
    exec rustc::  (
        --color, always,
-       -C, opt-level=2,
+       crate opts,
        -L,all=${crate_dir},
        --crate-type=lib,
        --crate-name, crate,
