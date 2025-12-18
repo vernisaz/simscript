@@ -28,14 +28,14 @@ filename(main)
 cropname(main,*${~/~}${~~})
 assign(src-path,~~)
 
-target clean {
+target clean::Clean built files {
     dependency {}
     dependency {clean_crate}
     dependency {clean_extra}
     rm  (executable)
 }
 
-target clippy:. {
+target clippy:.:Runs Clippyy {
     dependency{target(build)}
     dependency{}
     display(Clipping ${main} ...)
@@ -58,7 +58,7 @@ target clippy:. {
 }
 
 
-target build:. {
+target build:.:Build the project {
     dependency{target(crate)}
     dependency {
        anynewer(${~script~},${executable})
@@ -82,7 +82,7 @@ target build:. {
     }
 }
 
-target run :.:Run project </> {
+target run :.:Run the project </> {
     dependency {
         target(build)
     }
