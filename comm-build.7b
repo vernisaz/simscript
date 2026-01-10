@@ -22,6 +22,10 @@ if {
     }
 }
 
+BLUE=\033[94m
+RED=\033[31\;1m
+NO_COLOR=\033[0m
+
 executable=./${project}${ext}
 
 filename(main)
@@ -66,7 +70,7 @@ target build:.:Build the project {
     dependency {
        anynewer(${src-path}${~/~}*.rs,${executable})
     }
-    display(Compiling ${main} ...)
+    display(Compiling ${BLUE}${main}${NO_COLOR} ...)
     exec rustc::  (
        --color, always,
        -L,all=${crate_dir},
@@ -87,7 +91,7 @@ target run :.:Run the project </> {
         target(build)
     }
     dependency {true}
-    ask(Would you like to run ${project}? [N|y] , N)
+    ask(Would you like to run ${RED}${project}${NO_COLOR}? [N|y] , N)
     assign(answer, ~~)
     if {
         or{
