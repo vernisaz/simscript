@@ -22,9 +22,7 @@ if {
     }
 }
 
-BLUE=\033[94m
-RED=\033[31\;1m
-NO_COLOR=\033[0m
+include(color.7b)
 
 executable=./${project}${ext}
 
