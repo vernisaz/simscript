@@ -22,12 +22,14 @@ target clean_crate {
     )
 }
 
+include(color.7b);
+
 target clippy_crate:. {
     dependency {
        target(crate)
     }
     dependency {}
-    display(Clipping crate : ${crate} ...)
+    display(Clipping crate : ${BLUE}${crate}${NO_COLOR} ...)
     exec clippy-driver::  (
        --color, always,
        -L,all=${crate_dir},
