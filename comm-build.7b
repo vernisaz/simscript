@@ -40,7 +40,7 @@ target clean::Clean built files {
 target clippy:.:Runs Clippyy {
     dependency{target(build)}
     dependency{}
-    display(Clipping ${main} ...)
+    display(Clipping ${YELLOW}${main}${NO_COLOR} ...)
     exec clippy-driver::  (
        --color, always,
        -L,all=${crate_dir},
