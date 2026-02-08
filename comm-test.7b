@@ -12,6 +12,38 @@ if {
 
 cfg_test=test
 
+target clippy_test:. {
+   dependency{target(crate)}
+   dependency {
+       anynewer(${~script~},${test file}${t_ext})
+   }
+   dependency {
+       anynewer(${~cwd~}/*.rs,${~cwd~}/${test file}${t_ext})
+   }
+   
+   if {
+   	   neq(test file,${test file})
+   	   then{assign(tesf file,test)}
+   }
+   display(Clipping test ${test file} ...)
+   exec clippy-driver::  (
+       --color, always,
+       -L,all=${crate_dir},
+       comp opts,
+       --edition, 2024,
+       -Cpanic=abort,
+       -o,
+       clippy-test,
+       ${~cwd~}${~/~}${test file}.rs
+   )
+     if {
+         neq(~~, 0)
+         then {
+            panic("test clippy error(s)")
+         }
+     }
+}
+
 target build test:. {
    dependency{target(crate)}
    dependency {
