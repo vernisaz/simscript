@@ -18,7 +18,10 @@ comp opts=[]
 
 include(common);
 ```
-So a final script will include the common script and required for it variables.
+
+If you plan to create a crate, then use `comm-crate.7b` common script.
+
+So the final script will include the common script and required for it variables.
 A typical script name is `bee.7b`. **rb** automatically looks for files with such name pattern, so
 just type **rb**, and the script will be executed.
 
