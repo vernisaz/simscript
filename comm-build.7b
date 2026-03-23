@@ -10,6 +10,7 @@
 #main=test
 #common =../simscript/comm-build.7b:file
 #crate_dir=../crates
+#doc_dir=../doc
 #comp opts=[]
 #
 #include(common);
@@ -59,6 +60,30 @@ target clippy:.:Runs Clippyy {
     }
 }
 
+target doc :.:Generate documentation {
+	dependency {
+        target(build)
+    }
+    dependency {true}
+    display(Documenting ${main} ...)
+    if {
+    	eq(doc_dir,) then {
+    		assign(doc_dir,.)
+    	}
+    }
+	exec rustdoc::(${main}.rs,
+		--out-dir,
+		doc_dir,
+	    --library-path,
+	    ${crate_dir}
+	)
+	if {
+        neq(~~, 0)
+        then {
+            panic("rustdoc error(s)")
+        }
+    }
+}
 
 target build:.:Build the project {
     dependency{target(crate)}

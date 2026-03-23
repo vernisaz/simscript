@@ -10,6 +10,7 @@
 #common =..${~/~}simscript${~/~}comm-crate.7b:file
 #common_test =..${~/~}simscript${~/~}comm-test.7b:file
 #crate_dir=..${~/~}crates
+#doc_dir=..${~/~}docs
 #include(common_test);
 #include(common);
 
@@ -46,6 +47,28 @@ target clippy_crate:. {
         neq(${~~}, 0)
         then {
             panic("crate clipping error(s)")
+        }
+    }
+}
+
+target doc_crate :.:Generate the documentation {
+	dependency {
+        target(crate)
+    }
+    dependency {true}
+    display(Documenting crate ${main} ...)
+	exec rustdoc::(${crate main}.rs,
+		--out-dir,
+		doc_dir,
+	    --library-path,
+	    ${crate_dir},
+	    --crate-name,
+	    crate
+	)
+	if {
+        neq(~~, 0)
+        then {
+            panic("rustdoc error(s)")
         }
     }
 }
