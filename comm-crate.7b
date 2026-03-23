@@ -56,18 +56,20 @@ target doc_crate :.:Generate the documentation {
         target(crate)
     }
     dependency {true}
-    display(Documenting crate ${main} ...)
+    display(Documenting crate ${crate main} ...)
     if {
     	neq(doc_dir,${doc_dir}) then {
-    		assign(doc_dir,.)
+    		assign(doc_dir,.${~/~}doc)
     	}
     }
     # more about possible arguments - https://doc.rust-lang.org/rustdoc/command-line-arguments.html
 	exec rustdoc::(${crate main}.rs,
 		--out-dir,
 		doc_dir,
+		--edition, 2024,
 	    --library-path,
 	    ${crate_dir},
+	    dep_crates,
 	    --crate-name,
 	    crate
 	)
