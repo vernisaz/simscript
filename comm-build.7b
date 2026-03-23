@@ -85,6 +85,7 @@ target doc :.:Generate documentation {
             panic("rustdoc error(s)")
         }
     }
+    display(Click http://localhost:3000/doc/${project}/ to view the documentation)
 }
 
 target build:.:Build the project {
