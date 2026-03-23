@@ -38,7 +38,7 @@ target clean::Clean built files {
     rm  (executable)
 }
 
-target clippy:.:Runs Clippyy {
+target clippy:.:Runs Clippy {
     dependency{target(build)}
     dependency{}
     display(Clipping ${YELLOW}${main}${NO_COLOR} ...)
@@ -67,7 +67,7 @@ target doc :.:Generate documentation {
     dependency {true}
     display(Documenting ${main} ...)
     if {
-    	eq(doc_dir,) then {
+    	neq(doc_dir,${doc_dir}) then {
     		assign(doc_dir,.)
     	}
     }
