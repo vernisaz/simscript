@@ -79,6 +79,7 @@ target doc_crate :.:Generate the documentation {
             panic("rustdoc error(s)")
         }
     }
+    display(Click http://localhost:3000/doc/${crate}/ to view the documentation)
 }
 
 target crate:. {

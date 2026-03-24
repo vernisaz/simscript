@@ -71,11 +71,19 @@ target doc :.:Generate documentation {
     		assign(doc_dir,.${~/~}doc)
     	}
     }
+    if {
+    	neq(dep_crates,${dep_crates}) then {
+    		array()
+    		assign(dep_crates,~~)
+    	}
+    }
 	exec rustdoc::(${main}.rs,
 		--out-dir,
 		doc_dir,
 		--edition, 2024,
 		dep_crates,
+		--crate-name,
+	    project,
 	    --library-path,
 	    ${crate_dir}
 	)
