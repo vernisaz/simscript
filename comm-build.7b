@@ -107,6 +107,7 @@ target build:.:Build the project {
     display(Compiling ${BLUE}${main}${NO_COLOR} ...)
     exec rustc::  (
        --color, always,
+       -Zterminal-urls,
        -L,all=${crate_dir},
        comp opts,
        --edition, 2024,

@@ -92,6 +92,7 @@ target crate:. {
    display(Compiling crate : ${crate} ...)
    exec rustc::  (
        --color, always,
+       -Zterminal-urls,
        crate opts,
        -L,all=${crate_dir},
        --crate-type=lib,
