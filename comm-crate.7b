@@ -90,9 +90,18 @@ target crate:. {
        anynewer(${crate_src}${~/~}*.rs,${crate_dir}${~/~}lib${crate}.rlib)
    }
    display(Compiling crate : ${crate} ...)
+   if {
+    	eq(NIGHTLY,yes) then {
+    		array(-Zterminal-urls)
+    		assign(nightly opts, ~~)
+    	} else  {
+    		array()
+    		assign(nightly opts, ~~)
+    	}
+    }
    exec rustc::  (
        --color, always,
-       -Zterminal-urls,
+       nightly opts,
        crate opts,
        -L,all=${crate_dir},
        --crate-type=lib,

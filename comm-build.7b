@@ -105,9 +105,18 @@ target build:.:Build the project {
        anynewer(${src-path}${~/~}*.rs,${executable})
     }
     display(Compiling ${BLUE}${main}${NO_COLOR} ...)
+    if {
+    	eq(NIGHTLY,yes) then {
+    		array(-Zterminal-urls)
+    		assign(nightly opts, ~~)
+    	} else  {
+    		array()
+    		assign(nightly opts, ~~)
+    	}
+    }
     exec rustc::  (
        --color, always,
-       -Zterminal-urls,
+       nightly opts,
        -L,all=${crate_dir},
        comp opts,
        --edition, 2024,
