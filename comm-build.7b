@@ -25,11 +25,15 @@ if {
 
 include(color.7b)
 
-executable=./${project}${ext}
+executable=${project}${ext}
 
 filename(main)
 cropname(main,*${~/~}${~~})
 assign(src-path,~~)
+
+filename(project)
+#cropname(main,*${~/~}${~~})
+assign(bin-name,~~)
 
 target clean::Clean built files {
     dependency {}
@@ -49,7 +53,7 @@ target clippy:.:Runs Clippy {
        --edition, 2024,
        -Cpanic=abort,
        -o,
-       clippy-${project},
+       clippy-${bin-name},
        ${~cwd~}${~/~}${main}.rs
     )
     if {
@@ -83,7 +87,7 @@ target doc :.:Generate documentation {
 		--edition, 2024,
 		dep_crates,
 		--crate-name,
-	    project,
+	    bin-name,
 	    --library-path,
 	    ${crate_dir}
 	)
