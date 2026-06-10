@@ -63,7 +63,7 @@ target doc_crate :.:Generate the documentation {
     	}
     }
     # more about possible arguments - https://doc.rust-lang.org/rustdoc/command-line-arguments.html
-	exec rustdoc::(${crate main}.rs,
+	exec rustdoc::(${crate_src}${~/~}${crate main}.rs,
 		--out-dir,
 		doc_dir,
 		--edition, 2024,
