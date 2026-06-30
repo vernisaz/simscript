@@ -33,6 +33,7 @@ target clippy_crate:. {
     display(Clipping crate : ${BLUE}${crate}${NO_COLOR} ...)
     exec clippy-driver::  (
        --color, always,
+       comp opts,
        -L,all=${crate_dir},
        --crate-type=lib,
 		-Cpanic=abort,
