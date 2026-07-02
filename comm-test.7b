@@ -18,7 +18,7 @@ target clippy_test:. {
        anynewer(${~script~},${test file}${t_ext})
    }
    dependency {
-       anynewer(${~cwd~}/*.rs,${~cwd~}/${test file}${t_ext})
+       anynewer(${~cwd~}${~/~}*.rs,${~cwd~}${~/~}clippy-test${t_ext})
    }
    
    if {
