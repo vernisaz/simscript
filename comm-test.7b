@@ -29,7 +29,8 @@ target clippy_test:. {
    exec clippy-driver::  (
        --color, always,
        -L,all=${crate_dir},
-       comp opts,
+       --extern, crate,
+       --cfg, cfg_test,
        --edition, 2024,
        -Cpanic=abort,
        -o,
