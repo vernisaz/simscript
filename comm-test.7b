@@ -12,6 +12,13 @@ if {
 
 cfg_test=test
 
+if {
+	neq(test opts,${test opts}) then {
+		array()
+		assign(test opts, ~~)
+	}
+}
+
 target clippy_test:. {
    dependency{target(crate)}
    dependency {
@@ -29,6 +36,7 @@ target clippy_test:. {
    exec clippy-driver::  (
        --color, always,
        -L,all=${crate_dir},
+       test opts,
        --extern, crate,
        --cfg, cfg_test,
        --edition, 2024,
@@ -62,6 +70,7 @@ target build test:. {
    exec rustc::  (
        --color, always,
        -L,all=${crate_dir},
+       test opts,
        --extern, crate,
        --cfg, cfg_test,
        --edition, 2024,
