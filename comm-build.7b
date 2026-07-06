@@ -53,7 +53,7 @@ target clippy:.:Runs Clippy {
        --edition, 2024,
        -Cpanic=abort,
        -o,
-       clippy-${bin-name},
+       clippy-${bin-name}${ext},
        ${~cwd~}${~/~}${main}.rs
     )
     if {
@@ -125,7 +125,7 @@ target build:.:Build the project {
        comp opts,
        --edition, 2024,
        -o,
-       project,
+       ${projec}t${ext},
        ${~cwd~}${~/~}${main}.rs)
     if {
         neq(~~, 0) then {
