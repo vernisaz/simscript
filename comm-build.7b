@@ -125,7 +125,7 @@ target build:.:Build the project {
        comp opts,
        --edition, 2024,
        -o,
-       ${projec}t${ext},
+       ${project}${ext},
        ${~cwd~}${~/~}${main}.rs)
     if {
         neq(~~, 0) then {
